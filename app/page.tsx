@@ -2,6 +2,7 @@ import Image from "next/image";
 import AuthorLinks from "./_components/author-links";
 import BookCard from "./_components/book-card";
 import HeroWave from "./_components/hero-wave";
+import RevealSection from "./_components/reveal-section";
 import ReviewMarquee from "./_components/review-marquee";
 
 const siteUrl = "https://chaeyunchung.com";
@@ -120,21 +121,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="books" aria-label="Books">
+      <RevealSection className="books" ariaLabel="Books">
         {books.map((book, index) => (
           <BookCard book={book} index={index} key={book.subtitle} />
         ))}
-      </section>
+      </RevealSection>
 
-      <section className="reviews" aria-labelledby="reviews-heading">
+      <RevealSection className="reviews" labelledBy="reviews-heading">
         <div className="section-heading">
           <h2 id="reviews-heading">Reviews</h2>
         </div>
 
         <ReviewMarquee reviews={reviews} />
-      </section>
+      </RevealSection>
 
-      <section className="author" aria-labelledby="author-heading">
+      <RevealSection className="author" labelledBy="author-heading">
         <div className="section-heading">
           <h2 id="author-heading">Author</h2>
         </div>
@@ -157,7 +158,7 @@ export default function HomePage() {
           </p>
           <AuthorLinks />
         </div>
-      </section>
+      </RevealSection>
 
       <footer className="site-footer">© 2026 Chaeyun Chung</footer>
     </main>
