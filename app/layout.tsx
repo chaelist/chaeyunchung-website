@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = "https://chaeyunchung.com";
+const gaMeasurementId = "G-B0LK8G8SWX";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -60,7 +62,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {children}
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', '${gaMeasurementId}');`}
+        </Script>
+      </body>
     </html>
   );
 }
